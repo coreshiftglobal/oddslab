@@ -7,3 +7,8 @@
     <priority>1.0</priority>
   </url>
 </urlset>
+
+
+<!-- Site Haritası Bildirimi (Otomatik Taramalar İçin) -->
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://coreshiftglobal.github.io/oddslab/sitemap.xml">
+<link rel="canonical" href="https://coreshiftglobal.github.io/oddslab/">
