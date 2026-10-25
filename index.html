@@ -5302,13 +5302,132 @@ window.addEventListener('error', e => console.error('OddsLab:', e.message));
 
 
 
+<article class="oddslab-article-container">
+  <header>
+    <h1>The Math Behind the Odds: How OddsLab V9.6.1 Decodes the Implied Probability of Football Markets</h1>
+    <p class="article-lead">The modern sports analytics landscape is flooded with emotional narratives, "sure-fire tips," and predictive models that rely heavily on superficial team hype. However, professional analysts and sharp observers of market movements know that the most accurate representation of a football match’s reality isn't found in a post-match interview—it is encoded directly within the opening and closing lines of licensed operators like iddaa.com, Misli, Nesine, and Bilyoner.</p>
+  </header>
+
+  <section>
+    <p>This is where OddsLab V9.6.1 shifts the paradigm. Rather than operating as a commercial tipster feed, OddsLab serves as an open-access, deterministic football odds prediction tool and match analysis laboratory. By stripping away commercial noise and treating three simple numbers—the 1X2 market odds—as raw data vectors, the system uncovers hidden market biases through multi-layered mathematical processing.</p>
+    <p>Here is a look inside the algorithmic engine of OddsLab and how it reframes football match analysis through pure, margin-adjusted probability.</p>
+  </section>
+
+  <section>
+    <h2>1. Stripping the Premium: Shin &amp; Power Margin Cleansing</h2>
+    <p>Before any comparative analysis can occur, a raw market price must be deconstructed. Bookmakers do not offer true probabilities; they display odds artificially shortened by a built-in house edge, commonly referred to as the margin or overround.</p>
+    <p>OddsLab utilizes a dual-layered marj-arındırma pipeline incorporating Shin and Power formulations. Unlike basic proportional distribution (which distributes the margin equally across all outcomes), Shin’s methodology assumes a percentage of the market is driven by "insider traders" or sharp money, adjusting the probability curve non-linearly. By stripping this implied tax, OddsLab establishes a pure, margin-free baseline anchor—the real structural probability priced by the market.</p>
+  </section>
+
+  <section>
+    <h2>2. Spatial Mapping via k-Nearest Neighbors (k-NN)</h2>
+    <p>How has the market historically reacted when priced exactly like this weekend's Süper Lig derby or midweek European tie? OddsLab answers this using a fixed k=8 Nearest Neighbors algorithm.</p>
+    <p>The system maps the current 1-X, 1-2, and X-2 log-odds ratios into a multidimensional geometric workspace. It then calculates the absolute vector distances against a localized historical archive of completed fixtures. By isolating the 8 closest historical matrix matches, the system measures the actual performance realization of teams placed under identical market pressures, completely filtering out team names to focus solely on pricing behavior.</p>
+  </section>
+[Current 1X2 Odds Input] 
+           │
+           ▼
+[Shin & Power Marj Arındırma] ──► Real Implied Baseline
+           │
+           ▼
+[k-NN Vector Space (k=8)] ───► Local Archive Pattern Overlaps
+           │
+           ▼
+[Final Evidence Council] ────► Unified Ensemble Probability
+
+  <section>
+    <h2>3. The Dual-Elo Framework and Poisson Distributions</h2>
+    <p>Team strength cannot be accurately judged by league standings alone. OddsLab runs a concurrent Double Elo rating system that updates globally and independently across the entire database. It processes two distinct vectors simultaneously:</p>
+    <ul>
+      <li><strong>Global Elo:</strong> The macro-level foundational strength of the club.</li>
+      <li><strong>Location-Specific Elo:</strong> The micro-level mechanical variance of Home vs. Away performance profiles.</li>
+    </ul>
+    <p>These numbers are seamlessly blended with a neutral Poisson–Dixon–Coles distribution model. By calculating expected goal intensities based on attacking and defensive form vectors, the engine simulates defensive friction and home-field structural edges without historical chronological decay.</p>
+  </section>
+
+  <section>
+    <h2>4. The Final Evidence Council: Cross-Layer Harman Payları</h2>
+    <p>The core philosophy of OddsLab is institutional consensus over single-model bias. The Model Direction panel does not display a generic win/loss guess. Instead
 
 
 
 
 
+<article class="oddslab-review-container">
+  <header>
+    <h1>OddsLab Technical and Architectural Evaluation Report</h1>
+    <p class="subtitle">Betting odds analysis, algorithmic structure, and system operation principles.</p>
+  </header>
 
+  <section class="review-section">
+    <h2>1. User Experience and Interface</h2>
+    <ul>
+      <li><strong>Clean and Ad-Free:</strong> The site contains no pop-up ads, registration forms, or aggressive banners redirecting to betting sites. It offers a clean, direct, and purpose-driven "workspace".</li>
+      <li><strong>Input Panel:</strong> Features a simple mechanism operated by entering the Home Team, Away Team, and 1-X-2 odds, then clicking the "ANALYZE" button.</li>
+      <li><strong>Risk/Confidence Bar:</strong> Instead of bluntly asserting "Team 1 will win," it presents how much risk the model perceives through a visual bar ranging from red to green.</li>
+    </ul>
+  </section>
 
+  <section class="review-section">
+    <h2>2. Mathematical and Algorithmic Engine</h2>
+    <p>Behind the scenes, the site incorporates highly complex data processing layers:</p>
+    <ul>
+      <li><strong>Margin Removal (Shin + Power Odds Models):</strong> Mathematically strips away the profit margin (vigish) added by bookmakers to the odds and calculates the "true probability" behind them.</li>
+      <li><strong>k-NN (K-Nearest Neighbors):</strong> Searches among its archive of 96 records (or those expanded by the user) to find the 8 past matches most similar to the current odds (k=8). Measures odds similarity hybridly via log-odds and vector distance.</li>
+      <li><strong>Double Elo &amp; Form Analysis:</strong> Scores teams not just by name, but forms a neutral blend based on overall strength, home/away performance (Dixon-Coles and Poisson distributions), and current form status.</li>
+      <li><strong>Final Evidence Council:</strong> The model does not base its final decision on a single criterion. It blends Value, H2H, Home Elo/Form, and Away Elo/Form vectors. The percentages here do not represent success probability, but rather the weight of that algorithm's impact on the final decision.</li>
+    </ul>
+  </section>
+
+  <section class="review-section">
+    <h2>3. Data Flow and Operating Principle</h2>
+    <ul>
+      <li><strong>Reverse Engineering (Hidden Bias):</strong> The system compares odds patterns with actual results in the archive to search for "hidden biases" (residuals) that the bookmaker either overlooked or intentionally manipulated while opening the odds.</li>
+      <li>
+        <strong>In-Play View (Live Status Calculation):</strong> You can run simulations by entering the minute and score of an ongoing match. The engine scales pre-match goal intensity expectations to the remaining time.
+        <ul>
+          <li><em>Critical Detail:</em> This module does not detect red cards, injuries, or on-field pressure at that moment; it is purely a mathematical scenario projection.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="review-section">
+    <h2>4. External Factors and Security</h2>
+    <ul>
+      <li><strong>100% Local Privacy:</strong> The analyses you perform on the site and the match archives you add (in JSON or CSV format) are never uploaded to a server; they remain entirely within your browser's memory. If you wish to download them, you can transfer the data locally to your device.</li>
+      <li><strong>Deterministic Structure:</strong> The system does not generate random predictions; entering the same data always yields the exact same mathematical result.</li>
+    </ul>
+  </section>
+
+  <section class="review-summary-table-section">
+    <h2>Summary Evaluation</h2>
+    
+    <div class="pros-cons-grid">
+      <div class="column pros">
+        <h3>Strengths (Pros)</h3>
+        <ul>
+          <li><strong>Manipulation-Free:</strong> No claims of "guaranteed wins," does not encourage gambling.</li>
+          <li><strong>Advanced Algorithm:</strong> Looks beyond simple odds; combines Shin margin removal and Elo.</li>
+          <li><strong>Data Freedom:</strong> Grants the ability to upload your own archive and personalize the model.</li>
+        </ul>
+      </div>
+      
+      <div class="column cons">
+        <h3>Limits and Risks (Cons)</h3>
+        <ul>
+          <li><strong>No Guarantees:</strong> Past odds patterns cannot guarantee future on-field luck factors.</li>
+          <li><strong>Inherent Detachment:</strong> Does not account for last-minute team injuries, managerial dismissals, or weather conditions.</li>
+          <li><strong>Limited Archive:</strong> Requires the user to expand the base built-in local archive (96 records) for deep analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="final-verdict">
+      <p><strong>Conclusion:</strong> OddsLab is not a prediction site, but a data filter. It serves as a well-designed scientific lens to help you see the mathematical balances hidden by bookmakers within the odds.</p>
+    </div>
+  </section>
+</article>
 
 
 
