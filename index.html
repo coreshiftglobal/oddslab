@@ -5338,127 +5338,116 @@ window.addEventListener('error', e => console.error('OddsLab:', e.message));
 
 
 
-# OddsLab V9.6.1: Futbol Bahis Oranlarının Arkasındaki Matematik
+<article class="oddslab-article-container">
+  <header>
+    <h1>OddsLab V9.6.1: Futbol Bahis Oranlarının Arkasındaki Matematik</h1>
+    <p class="article-lead">Modern spor analitiği dünyası duygusal anlatılar, “kesin kupon” vaatleri ve yüzeysel takım heyecanına dayanan tahmin modelleriyle dolup taşmaktadır. Oysa profesyonel analistler ve piyasa hareketlerini yakından takip edenler bilir ki bir futbol maçının en doğru matematiksel temsili, maç sonu röportajlarında değil; iddaa.com, Misli, Nesine ve Bilyoner gibi lisanslı operatörlerin açılış ve kapanış oranlarında kodlanmıştır.</p>
+  </header>
 
-## Giriş
+  <section>
+    <p>OddsLab V9.6.1 tam da bu noktada paradigmayı değiştirir. Ticari bir tipster beslemesi olarak değil, açık erişimli, deterministik bir futbol oran tahmin aracı ve maç analizi laboratuvarı olarak konumlanır. Ticari gürültüyü temizleyerek yalnızca üç basit sayıyı — 1X2 piyasa oranlarını — ham veri vektörü olarak ele alır ve çok katmanlı matematiksel işlemlerle gizli piyasa sapmalarını ortaya çıkarır.</p>
+    <p>Bu yazıda OddsLab’in algoritmik motorunun içine girerek, futbol maç analizini saf, marj arındırılmış olasılık üzerinden nasıl yeniden çerçevelediğini inceleyeceğiz.</p>
+  </section>
 
-Modern spor analitiği dünyası duygusal anlatılar, “kesin kupon” vaatleri ve yüzeysel takım heyecanına dayanan tahmin modelleriyle dolup taşmaktadır. Oysa profesyonel analistler ve piyasa hareketlerini yakından takip edenler bilir ki bir futbol maçının en doğru matematiksel temsili, maç sonu röportajlarında değil; iddaa.com, Misli, Nesine ve Bilyoner gibi lisanslı operatörlerin açılış ve kapanış oranlarında kodlanmıştır.
+  <section class="article-body">
+    <h2>Gelişme</h2>
 
-OddsLab V9.6.1 tam da bu noktada paradigmayı değiştirir. Ticari bir tipster beslemesi olarak değil, açık erişimli, deterministik bir futbol oran tahmin aracı ve maç analizi laboratuvarı olarak konumlanır. Ticari gürültüyü temizleyerek yalnızca üç basit sayıyı — 1X2 piyasa oranlarını — ham veri vektörü olarak ele alır ve çok katmanlı matematiksel işlemlerle gizli piyasa sapmalarını ortaya çıkarır.
+    <div class="content-block">
+      <h3>1. Premium’un Soyulması: Shin &amp; Power Marj Arındırma</h3>
+      <p>Karşılaştırmalı herhangi bir analiz yapılmadan önce ham piyasa fiyatının parçalanması gerekir. Bahis şirketleri gerçek olasılık sunmaz; oranları, “marj” veya “overround” olarak bilinen yerleşik ev sahibi avantajıyla yapay olarak kısaltırlar.</p>
+      <p>OddsLab, Shin ve Power formülasyonlarını içeren çift katmanlı bir marj arındırma hattı kullanır. Temel orantısal dağıtımdan (marjı tüm sonuçlara eşit dağıtan yöntem) farklı olarak Shin metodolojisi, piyasanın belirli bir yüzdesinin “içeriden bilgi sahibi traderlar” veya keskin para tarafından yönlendirildiğini varsayar ve olasılık eğrisini doğrusal olmayan şekilde ayarlar. Bu örtülü vergiyi soyarak OddsLab, piyasa tarafından fiyatlandırılan gerçek yapısal olasılığı — saf, marjdan arındırılmış temel çıpayı — ortaya koyar.</p>
+    </div>
 
-Bu yazıda OddsLab’in algoritmik motorunun içine girerek, futbol maç analizini saf, marj arındırılmış olasılık üzerinden nasıl yeniden çerçevelediğini inceleyeceğiz.
-
-## Gelişme
-
-### 1. Premium’un Soyulması: Shin & Power Marj Arındırma
-
-Karşılaştırmalı herhangi bir analiz yapılmadan önce ham piyasa fiyatının parçalanması gerekir. Bahis şirketleri gerçek olasılık sunmaz; oranları, “marj” veya “overround” olarak bilinen yerleşik ev sahibi avantajıyla yapay olarak kısaltırlar.
-
-OddsLab, Shin ve Power formülasyonlarını içeren çift katmanlı bir marj arındırma hattı kullanır. Temel orantısal dağıtımdan (marjı tüm sonuçlara eşit dağıtan yöntem) farklı olarak Shin metodolojisi, piyasanın belirli bir yüzdesinin “içeriden bilgi sahibi traderlar” veya keskin para tarafından yönlendirildiğini varsayar ve olasılık eğrisini doğrusal olmayan şekilde ayarlar. Bu örtülü vergiyi soyarak OddsLab, piyasa tarafından fiyatlandırılan gerçek yapısal olasılığı — saf, marjdan arındırılmış temel çıpayı — ortaya koyar.
-
-### 2. Uzamsal Haritalama: k-En Yakın Komşu (k-NN)
-
-Piyasa, bu hafta sonu oynanacak bir Süper Lig derbisi veya hafta içi Avrupa maçı gibi fiyatlandırıldığında tarihsel olarak nasıl tepki vermiştir? OddsLab bu soruya sabit k=8 En Yakın Komşu algoritmasıyla cevap verir.
-
-Sistem, güncel 1-X, 1-2 ve X-2 log-oran oranlarını çok boyutlu bir geometrik çalışma alanına yerleştirir. Ardından tamamlanmış maçlardan oluşan yerel tarihsel arşive karşı mutlak vektör mesafelerini hesaplar. En yakın 8 tarihsel matris maçını izole ederek, tamamen aynı piyasa baskıları altında kalan takımların gerçek performans gerçekleşmelerini ölçer. Takım isimlerini tamamen filtreleyerek yalnızca fiyatlandırma davranışına odaklanır.
-[Güncel 1X2 Oran Girdisi]
-│
-▼
-[Shin & Power Marj Arındırma] ──► Gerçek İma Edilen Temel
-│
-▼
-[k-NN Vektör Uzayı (k=8)] ───► Yerel Arşiv Kalıp Örtüşmeleri
-│
-▼
-[Final Evidence Council] ────► Birleşik Ensemble Olasılık
-
-### 3. Çift Katmanlı Elo Çerçevesi ve Poisson Dağılımları
-
-Takım gücü yalnızca lig sıralamasına bakılarak doğru şekilde değerlendirilemez. OddsLab, tüm veritabanı üzerinde küresel ve bağımsız olarak güncellenen eş zamanlı bir Çift Elo derecelendirme sistemi çalıştırır. İki ayrı vektörü aynı anda işler:
-
-- **Küresel Elo:** Kulübün makro düzeydeki temel gücü.
-- **Konum Spesifik Elo:** Ev sahibi / deplasman performans profillerinin mikro düzeydeki mekanik varyansı.
-
-Bu sayılar, nötr bir Poisson–Dixon–Coles dağılım modeliyle sorunsuz şekilde harmanlanır. Hücum ve savunma form vektörlerine dayalı beklenen gol yoğunlukları hesaplanarak, tarihsel kronolojik bozulma olmadan savunma sürtünmesi ve ev sahibi saha yapısal avantajı simüle edilir.
-
-### 4. Final Evidence Council: Katmanlar Arası Harman Payları
-
-OddsLab’in temel felsefesi, tek model önyargısı yerine kurumsal uzlaşıdır. Model Yönü paneli genel bir galibiyet/mağlubiyet tahmini göstermez. Bunun yerine Value, H2H, Ev Elo/Form ve Deplasman Elo/Form vektörlerini birleştirir. Buradaki yüzdeler başarı olasılığını değil, ilgili algoritmanın nihai karara olan katkı ağırlığını ifade eder.
-
-### Teknik ve Mimari Değerlendirme
-
-**Kullanıcı Deneyimi ve Arayüz**
-- Temiz ve reklamsız bir çalışma alanı sunar; açılır reklam, kayıt formu veya bahis sitesine yönlendiren agresif banner yoktur.
-- Ev sahibi, deplasman ve 1-X-2 oranları girilerek “ANALYZE” butonuna basılır.
-- Risk/Güven çubuğu, “1. takım kazanır” demek yerine modelin algıladığı risk seviyesini kırmızıdan yeşile görsel bir skala ile sunar.
-
-**Matematiksel ve Algoritmik Motor**
-- Shin + Power modelleriyle bahisçi marjını matematiksel olarak soyarak “gerçek olasılığı” hesaplar.
-- k=8 sabit komşulukla log-oran ve vektör mesafesi üzerinden hibrit benzerlik ölçümü yapar.
-- Çift Elo + form analizi ile takımları isimden ziyade güç, ev/deplasman profili ve güncel form üzerinden değerlendirir.
-- Final Evidence Council, tek bir kritere dayanmaz; katmanları katkı ağırlıklarıyla harmanlar.
-
-**Veri Akışı ve Çalışma Prensibi**
-- Gizli sapma (residual) analiziyle bahisçinin oran açarken gözden kaçırdığı veya bilinçli manipüle ettiği kalıpları arar.
-- Canlı durum görünümü, dakika ve skoru girerek maç öncesi gol yoğunluk beklentilerini kalan süreye ölçekler. Kırmızı kart, sakatlık veya saha baskısını algılamaz; tamamen matematiksel senaryo projeksiyonudur.
-
-**Gizlilik ve Determinizm**
-- Tüm analizler ve kullanıcı arşiv eklemeleri yalnızca tarayıcı belleğinde kalır; sunucuya yüklenmez.
-- Aynı veri her zaman aynı matematiksel sonucu üretir. Rastgele tohum veya spekülatif sezgi yoktur.
-
-## Sonuç
-
-OddsLab bir tahmin sitesi değil, bir veri filtresidir. Bahis şirketlerinin oranların içine gizlediği matematiksel dengeleri görmenizi sağlayan, iyi tasarlanmış bilimsel bir mercektir.
-
-Güçlü yanları arasında manipülasyonsuz yapı, ileri düzey algoritma (Shin marj arındırma + Elo) ve kullanıcının kendi arşivini yükleyerek modeli kişiselleştirebilmesi yer alır. Sınırlılıkları ise geçmiş kalıpların geleceği garanti etmemesi, son dakika sakatlık veya teknik direktör değişikliklerini hesaba katmaması ve derin analiz için kullanıcının temel 96 kayıtlık arşivi genişletmesi gerekliliğidir.
-
-Spor bahisleri risk içerir. Garanti sonuç, garanti kâr veya “mutlaka oynanmalı” iddiası yoktur. Geçmiş kalıplar geleceği belirlemez. Sorumluluk tamamen kullanıcıya aittir.
-
-OddsLab; iddaa.com tarzı fiyatlar ve Misli, Nesine, Bilyoner gibi lisanslı operatör hatları için ücretsiz çevrimiçi 1X2 analiz aracı, maç analizi laboratuvarı ve tarihsel oran kalıp çalışma alanıdır. Sakin, yapılandırılmış ve drama içermeyen bir bakış sunmak üzere tasarlanmıştır.
-
----
-
-## Sıkça Sorulan Sorular (SSS)
-
-### OddsLab nedir ve ne işe yarar?
-OddsLab, futbol maçlarının 1X2 oranlarını matematiksel olarak analiz eden ücretsiz, açık erişimli bir araştırma aracıdır. Bahis tavsiyesi vermez; piyasa oranlarındaki gizli yapıları ve tarihsel kalıpları ortaya koyar.
-
-### OddsLab bahis sitesi midir veya kupon önerir mi?
-Hayır. OddsLab bir bahis şirketi değildir, hesap açmaz, kupon önermez ve hiçbir operatöre yönlendirmez. Sadece araştırma ve karşılaştırma çalışma alanıdır.
-
-### Hangi oranlarla çalışır?
-iddaa.com, Misli, Nesine, Bilyoner ve diğer lisanslı operatörlerden alınan 1X2 (maç sonucu) oranlarıyla çalışır. Kullanıcı oranları kendisi girer.
-
-### Analizler sunucuya kaydediliyor mu?
-Hayır. Tüm hesaplamalar ve kullanıcı arşiv eklemeleri yalnızca tarayıcınızın yerel belleğinde gerçekleşir. Verileriniz sunucuya gönderilmez.
-
-### Model nasıl çalışır?
-Shin ve Power yöntemleriyle marj arındırma → k=8 en yakın komşu kalıp eşleştirme → Çift Elo + Poisson-Dixon-Coles → Final Evidence Council ile katmanların ağırlıklı birleşimi şeklinde ilerler.
-
-### Canlı maç analizi yapabilir miyim?
-Evet. Dakika ve güncel skoru girerek maç öncesi gol yoğunluk beklentilerinin kalan süreye ölçeklendiği koşullu bir senaryo projeksiyonu alabilirsiniz. Kırmızı kart veya sakatlık gibi anlık olayları algılamaz.
-
-### Sonuçlar garanti midir?
-Hayır. Hiçbir matematiksel model geleceği garanti edemez. OddsLab geçmiş piyasa kalıplarını ve yapısal olasılıkları gösterir; karar ve risk tamamen size aittir.
-
-### Kendi maç arşivimi ekleyebilir miyim?
-Evet. Tamamlanmış maçları oran ve skorlarıyla JSON veya CSV formatında ekleyebilirsiniz. Sistem mükerrer kayıtları otomatik atlar.
-
-### Kimler için uygundur?
-Süper Lig, Şampiyonlar Ligi, Avrupa Ligi ve büyük Avrupa liglerini takip eden, oran okuyan ve maç öncesi yapılandırılmış bir bakış isteyen herkes için uygundur. 18 yaş altı veya bahisin yasak olduğu bölgelerde bahis amacıyla kullanılmamalıdır.
-
-### OddsLab ücretsiz midir?
-Evet. Tamamen ücretsizdir, kayıt gerektirmez ve reklam içermez.
-
----
-
-**OddsLab**  
-Futbol oran tahmin aracı · Maç analizi laboratuvarı · Tarihsel oran kalıp çalışma alanı  
-
-Referans oranlar genellikle iddaa.com ve diğer lisanslı platformlardan (Misli, Nesine, Bilyoner vb.) alınır. Bahis şirketi değildir. Kumar teşvik etmez. Kâr garantisi yoktur. Karar ve risk size aittir.
+    <div class="content-block">
+      <h3>2. Uzamsal Haritalama: k-En Yakın Komşu (k-NN)</h3>
+      <p>Piyasa, bu hafta sonu oynanacak bir Süper Lig derbisi veya hafta içi Avrupa maçı gibi fiyatlandırıldığında tarihsel olarak nasıl tepki vermiştir? OddsLab bu soruya sabit k=8 En Yakın Komşu algoritmasıyla cevap verir.</p>
+      <p>Sistem, güncel 1-X, 1-2 ve X-2 log-oran oranlarını çok boyutlu bir geometrik çalışma alanına yerleştirir. Ardından tamamlanmış maçlardan oluşan yerel tarihsel arşive karşı mutlak vektör mesafelerini hesaplar. En yakın 8 tarihsel matris maçını izole ederek, tamamen aynı piyasa baskıları altında kalan takımların gerçek performans gerçekleşmelerini ölçer. Takım isimlerini tamamen filtreleyerek yalnızca fiyatlandırma davranışına odaklanır.</p>
+    </div>
+  </section>
+</article>
 
 
+<article class="oddslab-article-container">
+  <section class="content-block">
+    <h3>3. Çift Katmanlı Elo Çerçevesi ve Poisson Dağılımları</h3>
+    <p>Takım gücü yalnızca lig sıralamasına bakılarak doğru şekilde değerlendirilemez. OddsLab, tüm veritabanı üzerinde küresel ve bağımsız olarak güncellenen eş zamanlı bir Çift Elo derecelendirme sistemi çalıştırır. İki ayrı vektörü aynı anda işler:</p>
+    <ul>
+      <li><strong>Küresel Elo:</strong> Kulübün makro düzeydeki temel gücü.</li>
+      <li><strong>Konum Spesifik Elo:</strong> Ev sahibi / deplasman performans profillerinin mikro düzeydeki mekanik varyansı.</li>
+    </ul>
+    <p>Bu sayılar, nötr bir Poisson–Dixon–Coles dağılım modeliyle sorunsuz şekilde harmanlanır. Hücum ve savunma form vektörlerine dayalı beklenen gol yoğunlukları hesaplanarak, tarihsel kronolojik bozulma olmadan savunma sürtünmesi ve ev sahibi saha yapısal avantajı simüle edilir.</p>
+  </section>
 
+  <section class="content-block">
+    <h3>4. Final Evidence Council: Katmanlar Arası Harman Payları</h3>
+    <p>OddsLab’in temel felsefesi, tek model önyargısı yerine kurumsal uzlaşıdır. Model Yönü paneli genel bir galibiyet/mağlubiyet tahmini göstermez. Bunun yerine Value, H2H, Ev Elo/Form ve Deplasman Elo/Form vektörlerini birleştirir. Buradaki yüzdeler başarı olasılığını değil, ilgili algoritmanın nihai karara olan katkı ağırlığını ifade eder.</p>
+  </section>
+
+  <section class="technical-evaluation">
+    <h2>Teknik ve Mimari Değerlendirme</h2>
+    
+    <h3>Kullanıcı Deneyimi ve Arayüz</h3>
+    <ul>
+      <li>Temiz ve reklamsız bir çalışma alanı sunar; açılır reklam, kayıt formu veya bahis sitesine yönlendiren agresif banner yoktur.</li>
+      <li>Ev sahibi, deplasman ve 1-X-2 oranları girilerek “ANALYZE” butonuna basılır.</li>
+      <li>Risk/Güven çubuğu, “1. takım kazanır” demek yerine modelin algıladığı risk seviyesini kırmızıdan yeşile görsel bir skala ile sunar.</li>
+    </ul>
+
+    <h3>Matematiksel ve Algoritmik Motor</h3>
+    <ul>
+      <li>Shin + Power modelleriyle bahisçi marjını matematiksel olarak soyarak “gerçek olasılığı” hesaplar.</li>
+      <li>k=8 sabit komşulukla log-oran ve vektör mesafesi üzerinden hibrit benzerlik ölçümü yapar.</li>
+      <li>Çift Elo + form analizi ile takımları isimden ziyade güç, ev/deplasman profili ve güncel form üzerinden değerlendirir.</li>
+      <li>Final Evidence Council, tek bir kritere dayanmaz; katmanları katkı ağırlıklarıyla harmanlar.</li>
+    </ul>
+
+    <h3>Veri Akışı ve Çalışma Prensibi</h3>
+    <ul>
+      <li>Gizli sapma (residual) analiziyle bahisçinin oran açarken gözden kaçırdığı veya bilinçli manipüle ettiği kalıpları arar.</li>
+      <li>Canlı durum görünümü, dakika ve skoru girerek maç öncesi gol yoğunluk beklentilerini kalan süreye ölçekler. Kırmızı kart, sakatlık veya saha baskısını algılamaz; tamamen matematiksel senaryo projeksiyonudur.</li>
+    </ul>
+
+    <h3>Gizlilik ve Determinizm</h3>
+    <ul>
+      <li>Tüm analizler ve kullanıcı arşiv eklemeleri yalnızca tarayıcı belleğinde kalır; sunucuya yüklenmez.</li>
+      <li>Aynı veri her zaman aynı matematiksel sonucu üretir. Rastgele tohum veya spekülatif sezgi yoktur.</li>
+    </ul>
+  </section>
+
+  <section class="conclusion-section">
+    <h2>Sonuç</h2>
+    <p>OddsLab bir tahmin sitesi değil, bir veri filtresidir. Bahis şirketlerinin oranların içine gizlediği matematiksel dengeleri görmenizi sağlayan, iyi tasarlanmış bilimsel bir mercektir.</p>
+    
+    <p>Güçlü yanları arasında manipülasyonsuz yapı, ileri düzey algoritma (Shin marj arındırma + Elo) ve kullanıcının kendi arşivini yükleyerek modeli kişiselleştirebilmesi yer alır. Sınırlılıkları ise geçmiş kalıpların geleceği garanti etmemesi, son dakika sakatlık veya teknik direktör değişikliklerini hesaba katmaması ve derin analiz için kullanıcının temel 96 kayıtlık arşivi genişletmesi gerekliliğidir.</p>
+    
+    <p>Spor bahisleri risk içerir. Garanti sonuç, garanti kâr veya “mutlaka oynanmalı” iddiası yoktur. Geçmiş kalıplar geleceği belirlemez. Sorumluluk tamamen kullanıcıya aittir.</p>
+    
+    <p>OddsLab; iddaa.com tarzı fiyatlar ve Misli, Nesine, Bilyoner gibi lisanslı operatör hatları için ücretsiz çevrimiçi 1X2 analiz aracı, maç analizi laboratuvarı ve tarihsel oran kalıp çalışma alanıdır. Sakin, yapılandırılmış ve drama içermeyen bir bakış sunmak üzere tasarlanmıştır.</p>
+  </section>
+
+  <section class="faq-section">
+    <h2>Sıkça Sorulan Sorular (SSS)</h2>
+
+    <div class="faq-item">
+      <h3>OddsLab nedir ve ne işe yarar?</h3>
+      <p>OddsLab, futbol maçlarının 1X2 oranlarını matematiksel olarak analiz eden ücretsiz, açık erişimli bir araştırma aracıdır. Bahis tavsiyesi vermez; piyasa oranlarındaki gizli yapıları ve tarihsel kalıpları ortaya koyar.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>OddsLab bahis sitesi midir veya kupon önerir mi?</h3>
+      <p>Hayır. OddsLab bir bahis şirketi değildir, hesap açmaz, kupon önermez ve hiçbir operatöre yönlendirmez. Sadece araştırma ve karşılaştırma çalışma alanıdır.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Hangi oranlarla çalışır?</h3>
+      <p>iddaa.com, Misli, Nesine, Bilyoner ve diğer lisanslı operatörlerden alınan 1X2 (maç sonucu) oranlarıyla çalışır. Kullanıcı oranları kendisi girer.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Analizler sunucuya kaydediliyor mu?</h3>
+      <p>Hayır. Tüm hesaplamalar ve kullanıcı
+
+  
 </body>
 </html>
 
