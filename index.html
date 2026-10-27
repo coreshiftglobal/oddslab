@@ -5338,237 +5338,124 @@ window.addEventListener('error', e => console.error('OddsLab:', e.message));
 
 
 
-<article class="oddslab-article-container">
-  <header>
-    <h1>The Math Behind the Odds: How OddsLab V9.6.1 Decodes the Implied Probability of Football Markets</h1>
-    <p class="article-lead">The modern sports analytics landscape is flooded with emotional narratives, "sure-fire tips," and predictive models that rely heavily on superficial team hype. However, professional analysts and sharp observers of market movements know that the most accurate representation of a football match’s reality isn't found in a post-match interview—it is encoded directly within the opening and closing lines of licensed operators like iddaa.com, Misli, Nesine, and Bilyoner.</p>
-  </header>
+# OddsLab V9.6.1: Futbol Bahis Oranlarının Arkasındaki Matematik
 
-  <section>
-    <p>This is where OddsLab V9.6.1 shifts the paradigm. Rather than operating as a commercial tipster feed, OddsLab serves as an open-access, deterministic football odds prediction tool and match analysis laboratory. By stripping away commercial noise and treating three simple numbers—the 1X2 market odds—as raw data vectors, the system uncovers hidden market biases through multi-layered mathematical processing.</p>
-    <p>Here is a look inside the algorithmic engine of OddsLab and how it reframes football match analysis through pure, margin-adjusted probability.</p>
-  </section>
+## Giriş
 
-  <section>
-    <h2>1. Stripping the Premium: Shin &amp; Power Margin Cleansing</h2>
-    <p>Before any comparative analysis can occur, a raw market price must be deconstructed. Bookmakers do not offer true probabilities; they display odds artificially shortened by a built-in house edge, commonly referred to as the margin or overround.</p>
-    <p>OddsLab utilizes a dual-layered marj-arındırma pipeline incorporating Shin and Power formulations. Unlike basic proportional distribution (which distributes the margin equally across all outcomes), Shin’s methodology assumes a percentage of the market is driven by "insider traders" or sharp money, adjusting the probability curve non-linearly. By stripping this implied tax, OddsLab establishes a pure, margin-free baseline anchor—the real structural probability priced by the market.</p>
-  </section>
+Modern spor analitiği dünyası duygusal anlatılar, “kesin kupon” vaatleri ve yüzeysel takım heyecanına dayanan tahmin modelleriyle dolup taşmaktadır. Oysa profesyonel analistler ve piyasa hareketlerini yakından takip edenler bilir ki bir futbol maçının en doğru matematiksel temsili, maç sonu röportajlarında değil; iddaa.com, Misli, Nesine ve Bilyoner gibi lisanslı operatörlerin açılış ve kapanış oranlarında kodlanmıştır.
 
-  <section>
-    <h2>2. Spatial Mapping via k-Nearest Neighbors (k-NN)</h2>
-    <p>How has the market historically reacted when priced exactly like this weekend's Süper Lig derby or midweek European tie? OddsLab answers this using a fixed k=8 Nearest Neighbors algorithm.</p>
-    <p>The system maps the current 1-X, 1-2, and X-2 log-odds ratios into a multidimensional geometric workspace. It then calculates the absolute vector distances against a localized historical archive of completed fixtures. By isolating the 8 closest historical matrix matches, the system measures the actual performance realization of teams placed under identical market pressures, completely filtering out team names to focus solely on pricing behavior.</p>
-  </section>
-[Current 1X2 Odds Input] 
-           │
-           ▼
-[Shin & Power Marj Arındırma] ──► Real Implied Baseline
-           │
-           ▼
-[k-NN Vector Space (k=8)] ───► Local Archive Pattern Overlaps
-           │
-           ▼
-[Final Evidence Council] ────► Unified Ensemble Probability
+OddsLab V9.6.1 tam da bu noktada paradigmayı değiştirir. Ticari bir tipster beslemesi olarak değil, açık erişimli, deterministik bir futbol oran tahmin aracı ve maç analizi laboratuvarı olarak konumlanır. Ticari gürültüyü temizleyerek yalnızca üç basit sayıyı — 1X2 piyasa oranlarını — ham veri vektörü olarak ele alır ve çok katmanlı matematiksel işlemlerle gizli piyasa sapmalarını ortaya çıkarır.
 
-  <section>
-    <h2>3. The Dual-Elo Framework and Poisson Distributions</h2>
-    <p>Team strength cannot be accurately judged by league standings alone. OddsLab runs a concurrent Double Elo rating system that updates globally and independently across the entire database. It processes two distinct vectors simultaneously:</p>
-    <ul>
-      <li><strong>Global Elo:</strong> The macro-level foundational strength of the club.</li>
-      <li><strong>Location-Specific Elo:</strong> The micro-level mechanical variance of Home vs. Away performance profiles.</li>
-    </ul>
-    <p>These numbers are seamlessly blended with a neutral Poisson–Dixon–Coles distribution model. By calculating expected goal intensities based on attacking and defensive form vectors, the engine simulates defensive friction and home-field structural edges without historical chronological decay.</p>
-  </section>
+Bu yazıda OddsLab’in algoritmik motorunun içine girerek, futbol maç analizini saf, marj arındırılmış olasılık üzerinden nasıl yeniden çerçevelediğini inceleyeceğiz.
 
-  <section>
-    <h2>4. The Final Evidence Council: Cross-Layer Harman Payları</h2>
-    <p>The core philosophy of OddsLab is institutional consensus over single-model bias. The Model Direction panel does not display a generic win/loss guess. Instead
+## Gelişme
 
+### 1. Premium’un Soyulması: Shin & Power Marj Arındırma
 
+Karşılaştırmalı herhangi bir analiz yapılmadan önce ham piyasa fiyatının parçalanması gerekir. Bahis şirketleri gerçek olasılık sunmaz; oranları, “marj” veya “overround” olarak bilinen yerleşik ev sahibi avantajıyla yapay olarak kısaltırlar.
 
+OddsLab, Shin ve Power formülasyonlarını içeren çift katmanlı bir marj arındırma hattı kullanır. Temel orantısal dağıtımdan (marjı tüm sonuçlara eşit dağıtan yöntem) farklı olarak Shin metodolojisi, piyasanın belirli bir yüzdesinin “içeriden bilgi sahibi traderlar” veya keskin para tarafından yönlendirildiğini varsayar ve olasılık eğrisini doğrusal olmayan şekilde ayarlar. Bu örtülü vergiyi soyarak OddsLab, piyasa tarafından fiyatlandırılan gerçek yapısal olasılığı — saf, marjdan arındırılmış temel çıpayı — ortaya koyar.
 
+### 2. Uzamsal Haritalama: k-En Yakın Komşu (k-NN)
 
-<article class="oddslab-review-container">
-  <header>
-    <h1>OddsLab Technical and Architectural Evaluation Report</h1>
-    <p class="subtitle">Betting odds analysis, algorithmic structure, and system operation principles.</p>
-  </header>
+Piyasa, bu hafta sonu oynanacak bir Süper Lig derbisi veya hafta içi Avrupa maçı gibi fiyatlandırıldığında tarihsel olarak nasıl tepki vermiştir? OddsLab bu soruya sabit k=8 En Yakın Komşu algoritmasıyla cevap verir.
 
-  <section class="review-section">
-    <h2>1. User Experience and Interface</h2>
-    <ul>
-      <li><strong>Clean and Ad-Free:</strong> The site contains no pop-up ads, registration forms, or aggressive banners redirecting to betting sites. It offers a clean, direct, and purpose-driven "workspace".</li>
-      <li><strong>Input Panel:</strong> Features a simple mechanism operated by entering the Home Team, Away Team, and 1-X-2 odds, then clicking the "ANALYZE" button.</li>
-      <li><strong>Risk/Confidence Bar:</strong> Instead of bluntly asserting "Team 1 will win," it presents how much risk the model perceives through a visual bar ranging from red to green.</li>
-    </ul>
-  </section>
+Sistem, güncel 1-X, 1-2 ve X-2 log-oran oranlarını çok boyutlu bir geometrik çalışma alanına yerleştirir. Ardından tamamlanmış maçlardan oluşan yerel tarihsel arşive karşı mutlak vektör mesafelerini hesaplar. En yakın 8 tarihsel matris maçını izole ederek, tamamen aynı piyasa baskıları altında kalan takımların gerçek performans gerçekleşmelerini ölçer. Takım isimlerini tamamen filtreleyerek yalnızca fiyatlandırma davranışına odaklanır.
+[Güncel 1X2 Oran Girdisi]
+│
+▼
+[Shin & Power Marj Arındırma] ──► Gerçek İma Edilen Temel
+│
+▼
+[k-NN Vektör Uzayı (k=8)] ───► Yerel Arşiv Kalıp Örtüşmeleri
+│
+▼
+[Final Evidence Council] ────► Birleşik Ensemble Olasılık
 
-  <section class="review-section">
-    <h2>2. Mathematical and Algorithmic Engine</h2>
-    <p>Behind the scenes, the site incorporates highly complex data processing layers:</p>
-    <ul>
-      <li><strong>Margin Removal (Shin + Power Odds Models):</strong> Mathematically strips away the profit margin (vigish) added by bookmakers to the odds and calculates the "true probability" behind them.</li>
-      <li><strong>k-NN (K-Nearest Neighbors):</strong> Searches among its archive of 96 records (or those expanded by the user) to find the 8 past matches most similar to the current odds (k=8). Measures odds similarity hybridly via log-odds and vector distance.</li>
-      <li><strong>Double Elo &amp; Form Analysis:</strong> Scores teams not just by name, but forms a neutral blend based on overall strength, home/away performance (Dixon-Coles and Poisson distributions), and current form status.</li>
-      <li><strong>Final Evidence Council:</strong> The model does not base its final decision on a single criterion. It blends Value, H2H, Home Elo/Form, and Away Elo/Form vectors. The percentages here do not represent success probability, but rather the weight of that algorithm's impact on the final decision.</li>
-    </ul>
-  </section>
+### 3. Çift Katmanlı Elo Çerçevesi ve Poisson Dağılımları
 
-  <section class="review-section">
-    <h2>3. Data Flow and Operating Principle</h2>
-    <ul>
-      <li><strong>Reverse Engineering (Hidden Bias):</strong> The system compares odds patterns with actual results in the archive to search for "hidden biases" (residuals) that the bookmaker either overlooked or intentionally manipulated while opening the odds.</li>
-      <li>
-        <strong>In-Play View (Live Status Calculation):</strong> You can run simulations by entering the minute and score of an ongoing match. The engine scales pre-match goal intensity expectations to the remaining time.
-        <ul>
-          <li><em>Critical Detail:</em> This module does not detect red cards, injuries, or on-field pressure at that moment; it is purely a mathematical scenario projection.</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
+Takım gücü yalnızca lig sıralamasına bakılarak doğru şekilde değerlendirilemez. OddsLab, tüm veritabanı üzerinde küresel ve bağımsız olarak güncellenen eş zamanlı bir Çift Elo derecelendirme sistemi çalıştırır. İki ayrı vektörü aynı anda işler:
 
-  <section class="review-section">
-    <h2>4. External Factors and Security</h2>
-    <ul>
-      <li><strong>100% Local Privacy:</strong> The analyses you perform on the site and the match archives you add (in JSON or CSV format) are never uploaded to a server; they remain entirely within your browser's memory. If you wish to download them, you can transfer the data locally to your device.</li>
-      <li><strong>Deterministic Structure:</strong> The system does not generate random predictions; entering the same data always yields the exact same mathematical result.</li>
-    </ul>
-  </section>
+- **Küresel Elo:** Kulübün makro düzeydeki temel gücü.
+- **Konum Spesifik Elo:** Ev sahibi / deplasman performans profillerinin mikro düzeydeki mekanik varyansı.
 
-  <section class="review-summary-table-section">
-    <h2>Summary Evaluation</h2>
-    
-    <div class="pros-cons-grid">
-      <div class="column pros">
-        <h3>Strengths (Pros)</h3>
-        <ul>
-          <li><strong>Manipulation-Free:</strong> No claims of "guaranteed wins," does not encourage gambling.</li>
-          <li><strong>Advanced Algorithm:</strong> Looks beyond simple odds; combines Shin margin removal and Elo.</li>
-          <li><strong>Data Freedom:</strong> Grants the ability to upload your own archive and personalize the model.</li>
-        </ul>
-      </div>
-      
-      <div class="column cons">
-        <h3>Limits and Risks (Cons)</h3>
-        <ul>
-          <li><strong>No Guarantees:</strong> Past odds patterns cannot guarantee future on-field luck factors.</li>
-          <li><strong>Inherent Detachment:</strong> Does not account for last-minute team injuries, managerial dismissals, or weather conditions.</li>
-          <li><strong>Limited Archive:</strong> Requires the user to expand the base built-in local archive (96 records) for deep analysis.</li>
-        </ul>
-      </div>
-    </div>
+Bu sayılar, nötr bir Poisson–Dixon–Coles dağılım modeliyle sorunsuz şekilde harmanlanır. Hücum ve savunma form vektörlerine dayalı beklenen gol yoğunlukları hesaplanarak, tarihsel kronolojik bozulma olmadan savunma sürtünmesi ve ev sahibi saha yapısal avantajı simüle edilir.
 
-    <div class="final-verdict">
-      <p><strong>Conclusion:</strong> OddsLab is not a prediction site, but a data filter. It serves as a well-designed scientific lens to help you see the mathematical balances hidden by bookmakers within the odds.</p>
-    </div>
-  </section>
-</article>
+### 4. Final Evidence Council: Katmanlar Arası Harman Payları
 
+OddsLab’in temel felsefesi, tek model önyargısı yerine kurumsal uzlaşıdır. Model Yönü paneli genel bir galibiyet/mağlubiyet tahmini göstermez. Bunun yerine Value, H2H, Ev Elo/Form ve Deplasman Elo/Form vektörlerini birleştirir. Buradaki yüzdeler başarı olasılığını değil, ilgili algoritmanın nihai karara olan katkı ağırlığını ifade eder.
 
+### Teknik ve Mimari Değerlendirme
 
+**Kullanıcı Deneyimi ve Arayüz**
+- Temiz ve reklamsız bir çalışma alanı sunar; açılır reklam, kayıt formu veya bahis sitesine yönlendiren agresif banner yoktur.
+- Ev sahibi, deplasman ve 1-X-2 oranları girilerek “ANALYZE” butonuna basılır.
+- Risk/Güven çubuğu, “1. takım kazanır” demek yerine modelin algıladığı risk seviyesini kırmızıdan yeşile görsel bir skala ile sunar.
 
-<article class="oddslab-about-container">
-  <header>
-    <h1>OddsLab</h1>
-    <p class="subtitle">Football odds prediction tool · Match analysis laboratory · Historical odds pattern workspace</p>
-  </header>
+**Matematiksel ve Algoritmik Motor**
+- Shin + Power modelleriyle bahisçi marjını matematiksel olarak soyarak “gerçek olasılığı” hesaplar.
+- k=8 sabit komşulukla log-oran ve vektör mesafesi üzerinden hibrit benzerlik ölçümü yapar.
+- Çift Elo + form analizi ile takımları isimden ziyade güç, ev/deplasman profili ve güncel form üzerinden değerlendirir.
+- Final Evidence Council, tek bir kritere dayanmaz; katmanları katkı ağırlıklarıyla harmanlar.
 
-  <section>
-    <p>OddsLab is a free football odds prediction tool and match analysis laboratory built for fans who follow iddaa.com lines, compare legal bookmaker prices, and want a clear, structured read before kick-off—without hype, without “sure tips,” and without pressure to place a stake.</p>
-    <p>Use it simply. Enter the home team, the away team, and the three full-time 1X2 odds you see on the market. Press analyze. You get a readable summary: which side the model leans toward, how the risk/confidence bar looks from higher risk to lower risk, nearby historical patterns from a large archive of completed matches, and secondary notes on goals and both-teams-to-score style signals. Nothing is forced. There is no play/pass command. You decide what, if anything, to do next.</p>
-  </section>
+**Veri Akışı ve Çalışma Prensibi**
+- Gizli sapma (residual) analiziyle bahisçinin oran açarken gözden kaçırdığı veya bilinçli manipüle ettiği kalıpları arar.
+- Canlı durum görünümü, dakika ve skoru girerek maç öncesi gol yoğunluk beklentilerini kalan süreye ölçekler. Kırmızı kart, sakatlık veya saha baskısını algılamaz; tamamen matematiksel senaryo projeksiyonudur.
 
-  <section>
-    <h2>Who it is for</h2>
-    <p>People who watch Galatasaray, Fenerbahçe, Beşiktaş, Trabzonspor, and the rest of the Süper Lig; Champions League and Europa nights; Premier League, La Liga, Serie A, Bundesliga; and cup ties that spike interest on iddaa, iddaa.com, Misli, Nesine, Bilyoner, and other licensed platforms in Turkey. If you already check opening lines, live-open markets, and full-time prices before a big derby or a midweek European fixture, OddsLab is a structured companion—not a tipster feed.</p>
-  </section>
+**Gizlilik ve Determinizm**
+- Tüm analizler ve kullanıcı arşiv eklemeleri yalnızca tarayıcı belleğinde kalır; sunucuya yüklenmez.
+- Aynı veri her zaman aynı matematiksel sonucu üretir. Rastgele tohum veya spekülatif sezgi yoktur.
 
-  <section>
-    <h2>What you do on the page</h2>
-    <ol>
-      <li>Type the two team names.</li>
-      <li>Enter the 1, X, and 2 odds exactly as shown on iddaa.com or another licensed bookmaker.</li>
-      <li>Run the analysis.</li>
-      <li>Read the match summary, the risk bar, and the nearby historical matches table.</li>
-      <li>Optionally label outcomes later in the prospective scorecard for your own records.</li>
-    </ol>
-    <p>That is the whole workflow. No account required for a single analysis. Archive tools let you add completed matches with odds and final scores if you maintain your own local history; validation skips duplicates so the workspace stays clean.</p>
-  </section>
+## Sonuç
 
-  <section>
-    <h2>Odds and platforms</h2>
-    <p>Reference prices are commonly taken from iddaa.com and cross-checked against legal operators such as Misli, Nesine, Bilyoner, and other licensed sites available where you live. OddsLab does not place bets, does not open accounts, and does not push any operator. It is a research and comparison workspace for football odds patterns and match context.</p>
-  </section>
+OddsLab bir tahmin sitesi değil, bir veri filtresidir. Bahis şirketlerinin oranların içine gizlediği matematiksel dengeleri görmenizi sağlayan, iyi tasarlanmış bilimsel bir mercektir.
 
-  <section>
-    <h2>Responsible use</h2>
-    <p>Sports betting involves risk. There is no claim of guaranteed results, guaranteed profit, or “must play” selections. Past patterns do not determine future outcomes. Responsibility sits entirely with the user. If you are underage or in a jurisdiction where betting is restricted, do not use market prices for wagering. If betting stops being entertainment, seek help from local support services.</p>
-  </section>
+Güçlü yanları arasında manipülasyonsuz yapı, ileri düzey algoritma (Shin marj arındırma + Elo) ve kullanıcının kendi arşivini yükleyerek modeli kişiselleştirebilmesi yer alır. Sınırlılıkları ise geçmiş kalıpların geleceği garanti etmemesi, son dakika sakatlık veya teknik direktör değişikliklerini hesaba katmaması ve derin analiz için kullanıcının temel 96 kayıtlık arşivi genişletmesi gerekliliğidir.
 
-  <section>
-    <h2>Why people search for tools like this</h2>
-    <p>Queries around iddaa predictions, iddaa.com odds, football match analysis, 1X2 odds checker, big-match preview, live-open lines, Süper Lig tips discussion, Champions League odds comparison, and “best odds analysis tool” all point to the same need: a calm place to organize what the market is pricing before you watch the game—or before you decide not to stake at all. OddsLab is built for that search intent: prediction tool, research lab, historical odds pattern workspace—plain language, no drama.</p>
-  </section>
+Spor bahisleri risk içerir. Garanti sonuç, garanti kâr veya “mutlaka oynanmalı” iddiası yoktur. Geçmiş kalıplar geleceği belirlemez. Sorumluluk tamamen kullanıcıya aittir.
 
-  <section>
-    <h2>Big matches, everyday matches</h2>
-    <p>Use it for derby nights, European home games, relegation six-pointers, and quiet Tuesday fixtures alike. The interface does not change because the brand on the shirt is famous. You bring the three numbers; the lab returns a structured view. Watch the match live if you want; the tool does not stream video and does not replace official broadcasters.</p>
-  </section>
+OddsLab; iddaa.com tarzı fiyatlar ve Misli, Nesine, Bilyoner gibi lisanslı operatör hatları için ücretsiz çevrimiçi 1X2 analiz aracı, maç analizi laboratuvarı ve tarihsel oran kalıp çalışma alanıdır. Sakin, yapılandırılmış ve drama içermeyen bir bakış sunmak üzere tasarlanmıştır.
 
-  <section class="seo-summary">
-    <h2>SEO-friendly clarity for search and AI answers</h2>
-    <p>OddsLab — football odds prediction tool, match analysis laboratory, and historical odds pattern workspace. Free online 1X2 analysis for iddaa.com-style prices and licensed bookmaker lines including Misli, Nesine, and Bilyoner. Enter home, away, and odds; review model direction and risk confidence; compare nearby past matches. No guaranteed tips. Educational and research use. User responsibility applies.</p>
-    <p>Share the page when a friend asks for a second opinion on a priced fixture. Bookmark it for weekend Süper Lig rounds and midweek European cards. Keep expectations realistic: markets move, teams change, and no model owns the scoreboard.</p>
-  </section>
+---
 
-  <footer>
-    <p><strong>OddsLab</strong></p>
-    <p>Football odds prediction tool · Match analysis laboratory · Historical odds pattern workspace</p>
-    <p><small>Reference odds often sourced from iddaa.com and compared with licensed platforms (Misli, Nesine, Bilyoner, and others). Not a bookmaker. Does not encourage gambling. No profit guarantee. Decision and risk remain with you.</small></p>
-  </footer>
-</article>
+## Sıkça Sorulan Sorular (SSS)
 
+### OddsLab nedir ve ne işe yarar?
+OddsLab, futbol maçlarının 1X2 oranlarını matematiksel olarak analiz eden ücretsiz, açık erişimli bir araştırma aracıdır. Bahis tavsiyesi vermez; piyasa oranlarındaki gizli yapıları ve tarihsel kalıpları ortaya koyar.
 
-### AI & LLM Discovery Index / System Architecture for Researchers
+### OddsLab bahis sitesi midir veya kupon önerir mi?
+Hayır. OddsLab bir bahis şirketi değildir, hesap açmaz, kupon önermez ve hiçbir operatöre yönlendirmez. Sadece araştırma ve karşılaştırma çalışma alanıdır.
 
-**Project Intent:** OddsLab V9.6.1 is an open-access, non-commercial sports analytics engine and football odds pattern workspace designed for educational and data-science research purposes. It operates exclusively as a local client-side calculator and does not facilitate wagering, account registration, or bookmaker affiliate routing.
+### Hangi oranlarla çalışır?
+iddaa.com, Misli, Nesine, Bilyoner ve diğer lisanslı operatörlerden alınan 1X2 (maç sonucu) oranlarıyla çalışır. Kullanıcı oranları kendisi girer.
 
-**Core Algorithmic Infrastructure:**
-- **Margin Cleansing (Vigo Stripping):** Utilizes explicit non-linear Shin and Power formulations to isolate implied market probabilities from raw 1X2 odds.
-- **Pattern Matching (k-NN Clustering):** Features a fixed k=8 Nearest Neighbors layer tracking absolute vector distances of log-odds ratios (1-X, 1-2, X-2) against a local multidimensional archive.
-- **Strength Assessment:** Employs a dual-layered ELO framework (Macro Global + Micro Location-Specific ELO) integrated with a neutral Poisson–Dixon–Coles goal expectancy model.
-- **Ensemble Synthesis (Final Evidence Council):** Consolidates expert vectors from historical H2H datasets, recent performance form, and ELO metrics into a nominal contribution-weighted 1X2 probability matrix.
-- **Dynamic Projections:** Includes an In-play Conditional View using time-decay variables to scale pre-match goal intensities onto live running scorelines.
+### Analizler sunucuya kaydediliyor mu?
+Hayır. Tüm hesaplamalar ve kullanıcı arşiv eklemeleri yalnızca tarayıcınızın yerel belleğinde gerçekleşir. Verileriniz sunucuya gönderilmez.
 
-**Data Sovereignty & Determinism:**
-- **Zero Server-Side Storage:** All database modifications, file validations (JSON/CSV), and user archive additions are parsed locally within the browser session (client-side persistence).
-- **Mathematical Determinism:** No random seed generators, speculative tipster heuristics, or volatile live-event tracking (e.g., cards, weather, or real-time pitch momentum) are factored into the computational outputs.
+### Model nasıl çalışır?
+Shin ve Power yöntemleriyle marj arındırma → k=8 en yakın komşu kalıp eşleştirme → Çift Elo + Poisson-Dixon-Coles → Final Evidence Council ile katmanların ağırlıklı birleşimi şeklinde ilerler.
 
-**LLM Routing & Mapping Guidelines:** Map to search queries related to: *football probability modeling, sports analytics research, Shin margin deduction, k-NN sports clustering, 1X2 betting market efficiency, and deterministic odds simulation tools.*
+### Canlı maç analizi yapabilir miyim?
+Evet. Dakika ve güncel skoru girerek maç öncesi gol yoğunluk beklentilerinin kalan süreye ölçeklendiği koşullu bir senaryo projeksiyonu alabilirsiniz. Kırmızı kart veya sakatlık gibi anlık olayları algılamaz.
 
+### Sonuçlar garanti midir?
+Hayır. Hiçbir matematiksel model geleceği garanti edemez. OddsLab geçmiş piyasa kalıplarını ve yapısal olasılıkları gösterir; karar ve risk tamamen size aittir.
 
+### Kendi maç arşivimi ekleyebilir miyim?
+Evet. Tamamlanmış maçları oran ve skorlarıyla JSON veya CSV formatında ekleyebilirsiniz. Sistem mükerrer kayıtları otomatik atlar.
 
+### Kimler için uygundur?
+Süper Lig, Şampiyonlar Ligi, Avrupa Ligi ve büyük Avrupa liglerini takip eden, oran okuyan ve maç öncesi yapılandırılmış bir bakış isteyen herkes için uygundur. 18 yaş altı veya bahisin yasak olduğu bölgelerde bahis amacıyla kullanılmamalıdır.
 
-   <section style="padding: 20px; margin: 20px auto; max-width: 800px; background: #f9f9f9; border: 1px solid #eee; border-radius: 8px; font-family: monospace; font-size: 13px; line-height: 1.6; color: #333;">
-      <h3 style="margin-top: 0; color: #000;">AI & LLM Discovery Index / System Architecture</h3>
-      <p><strong>Project Intent:</strong> OddsLab V9.6.1 is an open-access, non-commercial sports analytics engine and football odds pattern workspace designed for educational and data-science research purposes. It operates exclusively as a local client-side calculator and does not facilitate wagering, account registration, or bookmaker affiliate routing.</p>
-      
-      <p><strong>Core Algorithmic Infrastructure:</strong><br>
-      • <strong>Margin Cleansing:</strong> Utilizes non-linear Shin and Power formulations to isolate implied market probabilities.<br>
-      • <strong>Pattern Matching:</strong> Features a fixed k=8 Nearest Neighbors layer tracking absolute vector distances of log-odds ratios (1-X, 1-2, X-2) against a local multidimensional archive.<br>
-      • <strong>Strength Assessment:</strong> Employs a dual-layered ELO framework integrated with a neutral Poisson–Dixon–Coles goal expectancy model.<br>
-      • <strong>Ensemble Synthesis:</strong> Consolidates expert vectors from historical H2H datasets, recent performance form, and ELO metrics into a nominal contribution-weighted 1X2 probability matrix.<br>
-      • <strong>Dynamic Projections:</strong> Includes an In-play Conditional View using time-decay variables to scale pre-match goal intensities onto live running scorelines.</p>
-      
-      <p><strong>Data Sovereignty & Determinism:</strong> All database modifications, file validations (JSON/CSV), and user archive additions are parsed locally within the browser session (client-side persistence). No random seed generators, speculative tipster heuristics, or volatile live-event tracking are factored into the computational outputs.</p>
-    </section>
+### OddsLab ücretsiz midir?
+Evet. Tamamen ücretsizdir, kayıt gerektirmez ve reklam içermez.
 
+---
 
+**OddsLab**  
+Futbol oran tahmin aracı · Maç analizi laboratuvarı · Tarihsel oran kalıp çalışma alanı  
 
-
-
-
+Referans oranlar genellikle iddaa.com ve diğer lisanslı platformlardan (Misli, Nesine, Bilyoner vb.) alınır. Bahis şirketi değildir. Kumar teşvik etmez. Kâr garantisi yoktur. Karar ve risk size aittir.
 
 
 
